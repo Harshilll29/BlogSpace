@@ -35,7 +35,7 @@ const BlogPostCard = ({ content, author }) => {
       </div>
 
       <div className='h-28 aspect-square bg-grey'>
-        <img src={`http://localhost:3000/image/${banner}`} alt='blog-banner' className='w-full h-full aspect-square object-cover'/>
+        <img src={`http://localhost:3000/media/${banner}`} alt='blog-banner' className='w-full h-full aspect-square object-cover'/>
       </div>
     </Link>
   )

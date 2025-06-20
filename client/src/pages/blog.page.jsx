@@ -105,7 +105,7 @@ const BlogPage = () => {
 
 
               <div className='max-w-[900px] center py-10 max-lg:px-[5vw]'>
-                <img src={`http://localhost:3000/image/${banner}`} className='aspect-video' />
+                <img src={`http://localhost:3000/media/${banner}`} className='aspect-video' />
 
                 <div className='mt-12'>
                   <h2>{title}</h2>

@@ -33,7 +33,7 @@ const ManagePublishedBlogCard = ({blog}) => {
     <>
     <div className='flex gap-10 border-b mb-6 max-md:px-4 border-grey pb-6 items-center'>
 
-    <img src={`http://localhost:3000/image/${banner}`}  className='max-md:hidden lg:hidden xl:block w-28 h-28 flex-none bg-grey object-cover'/>
+    <img src={`http://localhost:3000/media/${banner}`}  className='max-md:hidden lg:hidden xl:block w-28 h-28 flex-none bg-grey object-cover'/>
 
     <div className='flex flex-col justify-between py-2 w-full min-w-[300px]'>
         <div>

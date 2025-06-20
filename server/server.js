@@ -114,8 +114,8 @@ app.post('/upload-banner', authenticateUser, upload.single('image'), async (req,
     res.json({ filename: req.file.filename });
 });
 
-// Serve image endpoint
-app.get('/image/:filename', async (req, res) => {
+// Serve imagemedia endpoint
+app.get('/media/:filename', async (req, res) => {
     try {
         const bucket = new GridFSBucket(mongoose.connection.db, { bucketName: 'uploads' });
         const stream = bucket.openDownloadStreamByName(req.params.filename);

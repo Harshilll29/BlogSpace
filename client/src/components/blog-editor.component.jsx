@@ -50,7 +50,7 @@ const BlogEditor = () => {
 
  useEffect(() => {
   if (blog.banner) {
-    setBannerUrl(`${import.meta.env.VITE_SERVER_DOMAIN}/image/${blog.banner}`);
+    setBannerUrl(`${import.meta.env.VITE_SERVER_DOMAIN}/media/${blog.banner}`);
   } else {
     setBannerUrl(theme === 'light' ? lightBanner : darkBanner);
   }
@@ -89,7 +89,7 @@ const BlogEditor = () => {
         }
       );
 
-      setBannerUrl(import.meta.env.VITE_SERVER_DOMAIN + "/image/" + res.data.filename);
+      setBannerUrl(import.meta.env.VITE_SERVER_DOMAIN + "/media/" + res.data.filename);
       setBlog({ ...blog, banner: res.data.filename });
       toast.success("Image uploaded!", { id: toastId });
     } catch (err) {

@@ -122,7 +122,7 @@ const PublishForm = () => {
             <p className="text-dark-grey mb-1">Preview</p>
             <div className="w-full aspect-video rounded-lg overflow-hidden bg-grey mt-4">
               <img
-                src={`${import.meta.env.VITE_SERVER_DOMAIN}/image/${banner}`}
+                src={`${import.meta.env.VITE_SERVER_DOMAIN}/media/${banner}`}
                 alt="Banner Preview"
               />
             </div>
