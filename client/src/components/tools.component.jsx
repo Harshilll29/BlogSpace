@@ -38,7 +38,7 @@ const uploadByFile = async (file) => {
   }
   return {
     success: 1,
-    file: { url: import.meta.env.VITE_SERVER_DOMAIN + "/image/" + data.filename }
+    file: { url: import.meta.env.VITE_SERVER_DOMAIN + "/media/" + data.filename }
   };
 };
 
