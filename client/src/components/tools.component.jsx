@@ -52,7 +52,7 @@ export const tools  = {
   header: {
     class: Header,
     config: {
-        placeholder: "Write Heaading...",
+        placeholder: "Write Heading...",
         levels: [2,3],
         defaultLevel: 2
     }
