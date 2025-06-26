@@ -3,8 +3,12 @@ import Animation from "../common/page-animation";
 import { Link } from "react-router-dom";
 import { UserContext } from "../App";
 import { removeFromSession } from "../common/session";
+import { useNavigate } from "react-router-dom";
 
 const UserNavigationPanel = () => {
+
+  const navigate = useNavigate();
+
   const {
     userAuth: { username },
     setUserAuth,
@@ -13,6 +17,7 @@ const UserNavigationPanel = () => {
   const signOutUser = () => {
     removeFromSession("user");
     setUserAuth({ });
+    navigate("/");
   };
 
   return (
