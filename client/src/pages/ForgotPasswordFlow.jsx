@@ -1,4 +1,3 @@
-// ForgotPasswordFlow.js
 import { useState } from "react";
 import ForgotPassword from "./forgot.password";
 import ResetPasswordWithOtp from "./reset.password";
