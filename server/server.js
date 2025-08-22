@@ -283,32 +283,65 @@ app.post('/google-auth', async (req, res) => {
 
 
 
+// app.post("/forgot-password", async (req, res) => {
+//   const { email } = req.body;
+//   const user = await User.findOne({ "personal_info.email": email });
+//   if (!user) return res.status(404).json({ error: "User not found" });
+//   const otp = Math.floor(100000 + Math.random() * 900000);
+//   user.reset_password_otp = otp;
+//   user.reset_password_otp_expires = Date.now() + 10 * 60 * 1000; // OTP valid for 10 minutes
+//   await user.save();
+
+//   // Send OTP via email
+//   const transporter = nodemailer.createTransport({
+//     service: "gmail",
+//     auth: {
+//       user: process.env.EMAIL,
+//       pass: process.env.EMAIL_PASSWORD,
+//     },
+//   });
+//   const mailOptions = {
+//     to: user.personal_info.email, 
+//     from: process.env.EMAIL,
+//     subject: "Password Reset OTP",
+//     text: `Your password reset OTP is: ${otp}. It is valid for 10 minutes.`,
+//   };
+
+//   await transporter.sendMail(mailOptions);
+//   res.status(200).json({ message: "OTP sent to your email" });
+// });
+
 app.post("/forgot-password", async (req, res) => {
-  const { email } = req.body;
-  const user = await User.findOne({ "personal_info.email": email });
-  if (!user) return res.status(404).json({ error: "User not found" });
-  const otp = Math.floor(100000 + Math.random() * 900000);
-  user.reset_password_otp = otp;
-  user.reset_password_otp_expires = Date.now() + 10 * 60 * 1000; // OTP valid for 10 minutes
-  await user.save();
+  try {
+    const { email } = req.body;
+    const user = await User.findOne({ "personal_info.email": email });
+    if (!user) return res.status(404).json({ error: "User not found" });
+    const otp = Math.floor(100000 + Math.random() * 900000);
+    user.reset_password_otp = otp;
+    user.reset_password_otp_expires = Date.now() + 10 * 60 * 1000;
+    await user.save();
 
-  // Send OTP via email
-  const transporter = nodemailer.createTransport({
-    service: "gmail",
-    auth: {
-      user: process.env.EMAIL,
-      pass: process.env.EMAIL_PASSWORD,
-    },
-  });
-  const mailOptions = {
-    to: user.personal_info.email, 
-    from: process.env.EMAIL,
-    subject: "Password Reset OTP",
-    text: `Your password reset OTP is: ${otp}. It is valid for 10 minutes.`,
-  };
+    // Send OTP via email
+    const transporter = nodemailer.createTransport({
+      service: "gmail",
+      auth: {
+        user: process.env.EMAIL,
+        pass: process.env.EMAIL_PASSWORD,
+      },
+    });
+    const mailOptions = {
+      to: user.personal_info.email,
+      from: process.env.EMAIL,
+      subject: "Password Reset OTP",
+      text: `Your password reset OTP is: ${otp}. It is valid for 10 minutes.`,
+    };
 
-  await transporter.sendMail(mailOptions);
-  res.status(200).json({ message: "OTP sent to your email" });
+    await transporter.sendMail(mailOptions);
+    res.status(200).json({ message: "OTP sent to your email" });
+  } catch (err) {
+    console.error("Forgot password error:", err); // <-- Add this
+    res.status(500).json({ error: "Internal server error" });
+  }
 });
 
 
