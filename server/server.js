@@ -41,6 +41,8 @@ app.use(cors({
   allowedHeaders: ['Content-Type', 'Authorization']
 }));
 
+app.options('*', cors());
+
 admin.initializeApp({
     credential: admin.credential.cert(serviceAccountKey)
 })
