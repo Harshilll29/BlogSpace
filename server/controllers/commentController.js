@@ -10,32 +10,32 @@ export const addComment = async (req, res) => {
         return res.status(403).json({ error: "write something to leave a comment" });
     }
 
-    // Create base comment object
+
     let commentObj = {
         blog_id: _id,
         blog_author,
         comment,
         commented_by: user_id,
-        childrenLevel: 0 // Default for top-level comment
+        childrenLevel: 0 
     };
 
-    // Handle replies
+
     if (replying_to) {
         commentObj.parent = replying_to;
         commentObj.isReply = true;
 
-        // Get parent comment to set childrenLevel
+        
         const parentComment = await Comment.findById(replying_to);
         if (parentComment) {
             commentObj.childrenLevel = parentComment.childrenLevel + 1;
         }
     }
 
-    // Save the comment
+    
     new Comment(commentObj).save().then(async commentFile => {
         let { comment, commentedAt, children, childrenLevel } = commentFile;
 
-        // Update blog document
+        
         Blog.findOneAndUpdate(
             { _id },
             {
@@ -49,7 +49,7 @@ export const addComment = async (req, res) => {
             console.log("new comment created");
         });
 
-        // Create notification
+        
         let notificationObj = {
             type: replying_to ? "reply" : "comment",
             blog: _id,
@@ -58,7 +58,7 @@ export const addComment = async (req, res) => {
             comment: commentFile._id
         };
 
-        // If it's a reply, update the parent comment
+        
         if (replying_to) {
             notificationObj.replied_on_comment = replying_to;
 
@@ -79,7 +79,7 @@ export const addComment = async (req, res) => {
             }
         }
 
-        // Save the notification
+        
         new Notification(notificationObj).save().then(() =>
             console.log("new notification created")
         );

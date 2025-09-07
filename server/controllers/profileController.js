@@ -19,17 +19,17 @@ export const updateProfileImg = async (req, res) => {
         let { imageData } = req.body;
         let userId = req.user;
 
-        // Validate if imageData exists
+        
         if (!imageData) {
             return res.status(400).json({ error: "No image data provided" });
         }
 
-        // Validate base64 format
+        
         if (!imageData.startsWith('data:image/')) {
             return res.status(400).json({ error: "Invalid image format" });
         }
 
-        // Optional: Validate image size (base64 is ~33% larger than original)
+        
         const sizeInBytes = (imageData.length * 3) / 4;
         const maxSize = 5 * 1024 * 1024; // 5MB
         
@@ -37,11 +37,11 @@ export const updateProfileImg = async (req, res) => {
             return res.status(400).json({ error: "Image size too large. Maximum 5MB allowed." });
         }
 
-        // Update user profile image in database
+        
         const updatedUser = await User.findOneAndUpdate(
             { _id: userId }, 
             { "personal_info.profile_img": imageData },
-            { new: true } // Return updated document
+            { new: true } 
         );
 
         if (!updatedUser) {
