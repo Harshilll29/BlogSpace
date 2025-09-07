@@ -54,23 +54,6 @@ app.use('/', profileRoutes);
 app.use('/', uploadRoutes);
 
 
-app.use((err, req, res, next) => {
-    console.error('Global error handler:', err);
-    res.status(500).json({ 
-        error: 'Internal server error',
-        message: process.env.NODE_ENV === 'development' ? err.message : 'Something went wrong'
-    });
-});
-
-
-app.use('*', (req, res) => {
-    res.status(404).json({ 
-        error: 'Route not found',
-        path: req.originalUrl 
-    });
-});
-
-
 app.listen(port, () => {
     console.log(`Server is running on port ${port}`);
 });
