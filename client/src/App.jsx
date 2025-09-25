@@ -10,6 +10,7 @@ import { Toaster } from "react-hot-toast";
 import HomePage from "./pages/home.page";
 import SearchPage from "./pages/search.page";
 import PageNotFound from "./pages/404.page";
+import Statistics from './components/statistics.component';
 import ProfilePage from "./pages/profile.page";
 import BlogPage from "./pages/blog.page";
 import SideNav from "./components/sidenavbar.component";
@@ -69,6 +70,7 @@ const App = () => {
           />
           <Route path="/" element={<Navbar />}>
             <Route index element={<HomePage />} />
+            <Route path="/statistics" element={<Statistics />} />
             <Route path="dashboard" element={<SideNav />}>
               <Route path="blogs" element={<ManageBlogs />} />
 

@@ -12,8 +12,11 @@ import {
     isLikedByUser,
     getUserWrittenBlogs,
     getUserWrittenBlogsCount,
-    deleteBlog
+    deleteBlog,
+    getAllBlogsCount,
+    getAllActiveWriters
 } from '../controllers/blogController.js';
+import { getYearlyStats } from '../controllers/statsController.js';
 
 const router = express.Router();
 
@@ -29,5 +32,8 @@ router.post('/isliked-by-user', verifyJWT, isLikedByUser);
 router.post('/user-written-blogs', verifyJWT, getUserWrittenBlogs);
 router.post('/user-written-blogs-count', verifyJWT, getUserWrittenBlogsCount);
 router.post('/delete-blog', verifyJWT, deleteBlog);
+router.get('/blogs/count', getAllBlogsCount);
+router.get('/blogs/active-writers', getAllActiveWriters);
+router.get('/stats/:year', getYearlyStats);
 
 export default router;

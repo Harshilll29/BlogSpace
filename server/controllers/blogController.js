@@ -277,3 +277,21 @@ export const deleteBlog = (req, res) => {
             return res.status(500).json({ error: err.message })
         })
 };
+
+export const getAllBlogsCount = async (req, res) => {
+  try {
+    const totalBlogs = await Blog.countDocuments({ draft: false });
+    res.json({ totalBlogs });
+  } catch (err) {
+    res.status(500).json({ error: err.message });
+  }
+};
+
+export const getAllActiveWriters = async (req, res) => {
+  try {
+    const activeWriters = (await Blog.distinct('author', { draft: false })).length;
+    res.json({ activeWriters });
+  } catch (err) {
+    res.status(500).json({ error: err.message });
+  }
+};

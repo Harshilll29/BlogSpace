@@ -14,7 +14,7 @@ import commentRoutes from './routes/commentRoutes.js';
 import notificationRoutes from './routes/notificationRoutes.js';
 import profileRoutes from './routes/profileRoutes.js';
 import uploadRoutes from './routes/uploadRoutes.js';
-
+import statsRoutes from './routes/statsRoutes.js';
 
 const app = express();
 const port = process.env.PORT || 3000;
@@ -52,7 +52,7 @@ app.use('/', commentRoutes);
 app.use('/', notificationRoutes);
 app.use('/', profileRoutes);
 app.use('/', uploadRoutes);
-
+app.use('/api/stats', statsRoutes);
 
 app.listen(port, () => {
     console.log(`Server is running on port ${port}`);

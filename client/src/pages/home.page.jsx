@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import Animation from "../common/page-animation";
 import InPageNavigation from "../components/inpage-navigation.component";
+import { FiBarChart2 } from "react-icons/fi";
+import { Link } from "react-router-dom";
 import { useEffect } from "react";
 import axios from "axios";
 import Loader from "../components/loader.component";
@@ -31,7 +33,7 @@ const HomePage = () => {
     "music",
     "sports",
     "political",
-    "religion"
+    "religion",
   ];
 
   const fetchLatestBlogs = ({ page = 1 }) => {
@@ -54,7 +56,8 @@ const HomePage = () => {
   const fetchBlogsByCategory = ({ page = 1 }) => {
     axios
       .post(import.meta.env.VITE_SERVER_DOMAIN + "/search-blogs", {
-        tag: pageState, page
+        tag: pageState,
+        page,
       })
       .then(async ({ data }) => {
         let formatedData = await FilterPaginationData({
@@ -62,7 +65,7 @@ const HomePage = () => {
           data: data.blogs,
           page,
           countRoute: "/search-blogs-count",
-          data_to_send: {tag: pageState}
+          data_to_send: { tag: pageState },
         });
         setBlogs(formatedData);
       })
@@ -120,7 +123,7 @@ const HomePage = () => {
               <div>
                 {blogs == null ? (
                   <Loader />
-                ) : (blogs.results.length ?
+                ) : blogs.results.length ? (
                   blogs.results.map((blog, i) => {
                     return (
                       <Animation
@@ -134,14 +137,18 @@ const HomePage = () => {
                       </Animation>
                     );
                   })
-                 : 
+                ) : (
                   <NoDataMessage message="No Blogs Published" />
                 )}
                 <LoadMoreDataBtn
-                 state={blogs} fetchDataFun={( pageState == "home" ? fetchLatestBlogs : fetchBlogsByCategory)}
+                  state={blogs}
+                  fetchDataFun={
+                    pageState == "home"
+                      ? fetchLatestBlogs
+                      : fetchBlogsByCategory
+                  }
                 />
               </div>
-              
 
               {trendingBlogs == null ? (
                 <Loader />
@@ -161,14 +168,24 @@ const HomePage = () => {
               )}
             </InPageNavigation>
           </div>
+          
           {/* filters and trending blogs */}
           <div className="min-w-[40%] lg:min-w-[400px] max-w-min border-l border-grey pl-8 pt-3 max-md:hidden">
             <div className="flex flex-col gap-10">
               <div>
-                <h1 className="font-medium text-xl mb-8">
-                  Stories from all interests
-                </h1>
-                <div className="flex gap-3 flex-wrap">
+                <div className="flex justify-between items-center mb-4">
+                  <h1 className="font-medium text-xl">
+                    Stories from all interests
+                  </h1>
+                  <Link
+                    to="/statistics"
+                    className="flex items-center gap-2 px-4 py-2 rounded-lg bg-purple text-white dark:text-black dark:bg-purple shadow hover:opacity-90"
+                  >
+                      <FiBarChart2 /> {" "}
+                    <span className="font-medium">Statistics</span>
+                  </Link>
+                </div>
+                <div className="flex gap-3 flex-wrap mt-4">
                   {categories.map((category, i) => {
                     return (
                       <button
@@ -185,6 +202,7 @@ const HomePage = () => {
                   })}
                 </div>
               </div>
+
               <div>
                 <h1 className="font-medium text-xl mb-8">
                   Trending <i className="fi fi-rr-arrow-trend-up"></i>

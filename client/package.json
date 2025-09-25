@@ -21,13 +21,17 @@
     "@editorjs/marker": "^1.4.0",
     "@editorjs/quote": "^2.7.6",
     "@flaticon/flaticon-uicons": "^2.2.0",
+    "@headlessui/react": "^2.2.8",
+    "@heroicons/react": "^1.0.6",
     "axios": "^1.4.0",
     "firebase": "^10.1.0",
     "framer-motion": "^10.13.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-hot-toast": "^2.4.1",
-    "react-router-dom": "^6.14.2"
+    "react-icons": "^5.5.0",
+    "react-router-dom": "^6.14.2",
+    "recharts": "^3.2.1"
   },
   "devDependencies": {
     "@types/react": "^18.2.15",
