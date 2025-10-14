@@ -679,7 +679,7 @@ FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.
 **Harshil**
 
 - GitHub: [@Harshilll29](https://github.com/Harshilll29)
-- LinkedIn: [Your LinkedIn](https://www.linkedin.com/in/harshil-joshi-/)
+- LinkedIn: [Harshil Joshi](https://www.linkedin.com/in/harshil-joshi-/)
 - Email: harshiljoshi525@gmail.com
 
 ---
