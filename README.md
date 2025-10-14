@@ -12,7 +12,7 @@
 [![JWT](https://img.shields.io/badge/Auth-JWT%20%2B%20OAuth-orange?style=flat&logo=jsonwebtokens)](https://jwt.io/)
 [![License](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
 
-[Features](#-features) • [Demo](#-demo) • [Tech Stack](#-tech-stack) • [Installation](#-installation) • [Usage](#-usage) • [API Documentation](#-api-documentation) • [Contributing](#-contributing)
+[Features](#-features) • [Tech Stack](#-tech-stack) • [Installation](#-installation) • [Usage](#-usage) • [API Documentation](#-api-documentation) • [Contributing](#-contributing)
 
 </div>
 
@@ -57,24 +57,6 @@
 - **Filter by Tags** - Browse content by categories
 - **Latest Blogs Feed** - Stay updated with newest content
 - **Trending Section** - Discover popular posts
-
----
-
-## 🎬 Demo
-
-### 🖼️ Screenshots
-
-**Homepage**
-> Clean, modern landing page with featured blogs and trending content
-
-**Editor**
-> Intuitive rich text editor for creating beautiful blog posts
-
-**User Dashboard**
-> Manage all your blogs, view analytics, and edit profile
-
-**Blog Detail Page**
-> Immersive reading experience with comments and reactions
 
 ---
 
