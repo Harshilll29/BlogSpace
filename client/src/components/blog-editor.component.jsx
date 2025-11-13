@@ -9,8 +9,8 @@ import axios from "axios";
 import { ThemeContext, UserContext } from "../App";
 import toast from "react-hot-toast";
 import { EditorContext } from "../pages/editor.pages";
-import EditorJS from "@editorjs/editorjs";
 import { tools } from "./tools.component";
+import EditorJS from "@editorjs/editorjs";
 
 const BlogEditor = () => {
   const context = useContext(EditorContext);

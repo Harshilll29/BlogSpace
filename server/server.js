@@ -45,6 +45,10 @@ admin.initializeApp({
     credential: admin.credential.cert(serviceAccountKey)
 });
 
+app.options('*', cors());
+
+// body parser
+app.use(express.json());
 
 app.use('/', authRoutes);
 app.use('/', blogRoutes);
